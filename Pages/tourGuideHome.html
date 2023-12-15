@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Guide Home</title>
+    <!--  -->
+    <link rel="stylesheet" href="../Styles/tourGuideHome.css">
+    <!--  -->
+    <script src="../jquery-3.7.1.js"></script>
+    <!--  -->
+    <script defer src="../JsCode/tourGuideHome.js"></script>
+</head>
+
+<body>
+    <!-- NavBar -->
+    <nav>
+        <img src="../image/logo.png" alt="">
+        <h2>Tourism Trips</h2>
+        <div id="logout">
+            <p>Logout </p>
+            <img src="../image/logout.png" alt="">
+        </div>
+    </nav>
+
+    <!-- tourGuide Info -->
+    <div>
+        <!-- SubTitle -->
+        <div class="title">
+            <div id="startPoint"></div>
+            <span>Tour Guide Info</span>
+        </div>
+
+        <div class="infoContanier">
+            <!-- tourGuide image -->
+            <div class="imageContaner">
+                <img src="../image/tourguide.png" alt="" srcset="">
+            </div>
+
+            <!-- tourGuide Information -->
+            <div class="updateInfo" id="myForm">
+
+                <div class="userData">
+                    <div class="field">
+                        <img src="../image/id-card.png" alt="">
+                        <input id="tourGuideName" type="text" placeholder="User Name" />
+                    </div>
+                    <div class="field">
+                        <img src="../image/padlock.png" alt="">
+                        <input id="tourGuidePassword" type="password" placeholder="Password" />
+                    </div>
+
+                    <div class="field">
+                        <img src="../image/call.png" alt="">
+                        <input id="tourGuidePhone" type="tel" placeholder="Phone" />
+                    </div>
+                </div>
+
+                <div class="userMsg">
+                    <input id="tourGuideBrief" placeholder="Brief about me ..." type="text">
+                </div>
+                <div class="updateButton">
+                    <button id="updateTourGuide">Update</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div style="height: 500px;background-color: white;"></div>
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,164 @@
+:root {
+    --darkGreen: #092635;
+    --buttonBackground: #9EC8B9;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/* AuthContanier */
+.AuthContanier {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* authContent */
+.authContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 300px;
+    height: 400px;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid #888;
+    background-color: #fefefe;
+    border-radius: 10px;
+}
+
+/* User Type */
+.userTypeContanier {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.userTypeContanier button {
+    width: 50%;
+    height: 30px;
+    margin: 5px;
+    border: 1px solid var(--darkGreen);
+    background-color: var(--buttonBackground);
+    color: var(--white);
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.authContent img {
+    width: 200px;
+    height: auto;
+}
+
+/* Auth Button Contanier */
+.authButtonContanier {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.authButtonContanier button {
+    width: 200px;
+    height: 40px;
+    margin: 15px;
+    border: 1px solid var(--darkGreen);
+    background-color: var(--buttonBackground);
+    color: var(--darkGreen);
+    font-size: large;
+    border-radius: 10px;
+}
+
+/* Sign In Content */
+.signInContent,
+.signUpContent {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 5px 5px 10px black;
+    /* transition: all 1s;
+    transform: scale(0); */
+}
+
+/* Close SingIN Contanier */
+.signInContent img,
+.signUpContent img {
+    width: 16px;
+    height: 16px;
+    margin: 10px;
+    align-self: flex-end;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+.field img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.field input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.signInContent button,
+.signUpContent button {
+    width: 150px;
+    height: 40px;
+    margin: 15px;
+    border: 1px solid var(--darkGreen);
+    background-color: var(--buttonBackground);
+    color: var(--darkGreen);
+    font-size: large;
+    border-radius: 10px;
+}
+
+.authButtonContanier button:active,
+.signInContent button:active,
+.signUpContent button:active {
+    background-color: var(--darkGreen);
+    color: var(--white);
+}
+
+.hidden {
+    display: flex;
+    /* transform: scale(1); */
+}
+
+/*  */

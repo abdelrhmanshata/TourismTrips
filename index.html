@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism Trips</title>
+    <!--  -->
+    <link rel="stylesheet" href="./indexStyle.css">
+    <!--  -->
+    <script src="jquery-3.7.1.js"></script>
+    <!--  -->
+    <script defer src="./indexCode.js"></script>
+</head>
+
+<body>
+
+    <div id="AuthContanier" class="AuthContanier">
+
+        <div class="authContent">
+            <!-- User Type -->
+            <div class="userTypeContanier">
+                <button id="userTourist">Tourist</button>
+                <button id="userTourGuide">Tour Guide</button>
+            </div>
+            <!-- Logo -->
+            <img id="logo" src="./image/tourist.png" alt="">
+            <!-- Auth Button -->
+            <div class="authButtonContanier">
+                <button id="signINContanier">Sign In</button>
+                <button id="signUPContanier">Sign Up</button>
+            </div>
+        </div>
+
+        <!-- Sign In -->
+        <div class="signInContent">
+            <img id="closeSignIn" src="./image/close.png">
+            <div class="field">
+                <img src="./image/mail.png" alt="">
+                <input id="userEmailsignIn" type="email" placeholder="Email" required />
+            </div>
+
+            <div class="field">
+                <img src="./image/padlock.png" alt="">
+                <input id="userPassswordsignIn" type="password" placeholder="Password" required />
+            </div>
+            <button id="signIN">Sign In</button>
+        </div>
+
+        <!-- Sign Up -->
+        <div class="signUpContent">
+            <img id="closeSignUp" src="./image/close.png">
+
+            <div class="field">
+                <img src="./image/id-card.png" alt="">
+                <input id="userNamesignUp" type="text" placeholder="User Name" required />
+            </div>
+
+            <div class="field">
+                <img src="./image/mail.png" alt="">
+                <input id="userEmailsignUp" type="email" placeholder="Email" required />
+            </div>
+
+            <div class="field">
+                <img src="./image/padlock.png" alt="">
+                <input id="userPasswordsignUp" type="password" placeholder="Password" required />
+            </div>
+
+            <div class="field">
+                <img src="./image/call.png" alt="">
+                <input id="userPhonesignUp" type="tel" placeholder="Phone" required />
+            </div>
+            <button id="signUP">Sign Up</button>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
