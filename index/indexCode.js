@@ -2,22 +2,18 @@
 
 // get Current User is Found
 var CurrentUserID = JSON.parse(localStorage.getItem("CurrentUser"));
-if (CurrentUserID.length > 0) {
+if (CurrentUserID.length != 0) {
     var CurrentUser = getCurrentUser(CurrentUserID);
     if (CurrentUser.Type == "Tourist") {
-        window.open('./Pages/touristHome.html', '_self');
+        window.open('../Pages/touristHome.html', '_self');
     } else {
-        window.open('./Pages/tourGuideHome.html', '_self');
+        window.open('../Pages/tourGuideHome.html', '_self');
     }
 }
 
 // get All user from local storage database
-var allUsers = [];
-var allUsersInStorage = JSON.parse(localStorage.getItem("Users"));
-
-if (allUsersInStorage != null) {
-    allUsers = allUsersInStorage;
-} else {
+var allUsers = JSON.parse(localStorage.getItem("Users"));
+if (allUsers == null) {
     allUsers = [];
 }
 
@@ -30,14 +26,14 @@ $('#userTourist').on('click', function () {
     userType = "Tourist";
     $(this).attr('style', 'background-color: #5C8374');
     $('#userTourGuide').attr('style', 'background-color: var(--buttonBackground)');
-    $('#logo').attr('src', './image/tourist.png');
+    $('#logo').attr('src', '../image/tourist.png');
 });
 
 $('#userTourGuide').on('click', function () {
     userType = "TourGuide";
     $(this).attr('style', 'background-color: #5C8374');
     $('#userTourist').attr('style', 'background-color: var(--buttonBackground)');
-    $('#logo').attr('src', './image/tourguide.png');
+    $('#logo').attr('src', '../image/tourguide.png');
 });
 
 // Auth Button
@@ -83,9 +79,9 @@ $('#signIN').on('click', function () {
         $('.signInContent').toggleClass('hidden');
         localStorage.setItem("CurrentUser", JSON.stringify(User.ID));
         if (User.Type == "Tourist") {
-            window.open('./Pages/touristHome.html', '_self');
+            window.open('../Pages/touristHome.html', '_self');
         } else {
-            window.open('./Pages/tourGuideHome.html', '_self');
+            window.open('../Pages/tourGuideHome.html', '_self');
         }
     } else {
         alert(`This User Not Found !!`);
