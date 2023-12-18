@@ -5,13 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tourist Home</title>
+    <!--  -->
+    <link rel="stylesheet" href="../Styles/touristHome.css">
+    <!--  -->
+    <script src="../jquery-3.7.1.js"></script>
+    <!--  -->
+    <script defer src="../JsCode/touristHome.js"></script>
 </head>
 
 <body>
+    <!-- NavBar -->
+    <nav>
+        <img src="../image/logo.png" alt="">
+        <h2>Tourism Trips</h2>
+        <div>
+            <img id="userProfile" src="../image/user.png" alt="">
+            <img id="logout" src="../image/logout.png" alt="">
+        </div>
+    </nav>
+
+    <div class="UpdateContanier">
+        <!-- Update Info -->
+        <div class="updateContent">
+            <img id="close" src="../image/close.png">
+
+            <div class="field">
+                <img src="../image/id-card.png" alt="">
+                <input id="userName" type="text" placeholder="User Name" required />
+            </div>
+
+            <div class="field">
+                <img src="../image/padlock.png" alt="">
+                <input id="userPassword" type="password" placeholder="Password" required />
+            </div>
+
+            <div class="field">
+                <img src="../image/call.png" alt="">
+                <input id="userPhone" type="tel" placeholder="Phone" required />
+            </div>
+
+            <button id="update">Update</button>
+        </div>
+    </div>
 
     <div>
-        <p style="font-size: 30px;">Tourist Home</p>
+
     </div>
+
+
+
+
+
+
+
+
+
 
 </body>
 

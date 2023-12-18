@@ -1,8 +1,6 @@
-// clearStorage();
-
 // get Current User is Found
 var CurrentUserID = JSON.parse(localStorage.getItem("CurrentUser"));
-if (CurrentUserID.length != 0) {
+if (CurrentUserID != null) {
     var CurrentUser = getCurrentUser(CurrentUserID);
     if (CurrentUser.Type == "Tourist") {
         window.open('../Pages/touristHome.html', '_self');
@@ -73,7 +71,7 @@ $('#signIN').on('click', function () {
     }
     var User = signInAccount(userEmail, userPassword, userType)
     if (User != null) {
-        alert(`Welcome back ${User.UserName}`);
+        alert(`Welcome Back ${User.UserName}`);
         $('#userEmailsignIn').val("");
         $('#userPassswordsignIn').val("");
         $('.signInContent').toggleClass('hidden');
@@ -139,7 +137,6 @@ $('#signUP').on('click', function () {
 
     signUpAccount(user);
 
-    alert("Successfully SignUp ");
     $('#userNamesignUp').val("");
     $('#userEmailsignUp').val("");
     $('#userPasswordsignUp').val("");
@@ -151,6 +148,7 @@ $('#signUP').on('click', function () {
 function signUpAccount(user) {
     allUsers.push(user)
     localStorage.setItem("Users", JSON.stringify(allUsers));
+    alert("Successfully SignUp ");
 }
 
 function signInAccount(email, password, userType) {
@@ -165,21 +163,6 @@ function signInAccount(email, password, userType) {
     }
     else {
         alert("No Users Found");
-    }
-}
-
-function updateUserData(userData) {
-    var Users = JSON.parse(localStorage.getItem("Users"));
-
-    if (Users == null) {
-        Users = [];
-    }
-
-    for (let index = 0; index < Users.length; index++) {
-        if (Users[index].ID == userData.ID) {
-            Users[index] = userData;
-            localStorage.setItem("Users", JSON.stringify(Users));
-        }
     }
 }
 

@@ -3,13 +3,11 @@ function clearStorage() {
     localStorage.clear();
 }
 // clearStorage();
-// localStorage.setItem("Trips", JSON.stringify([]));
-
 
 // // // // // // // // // // // // // // // // // // // // // // // // // 
 // Logout User
 $('#logout').on('click', function () {
-    localStorage.setItem("CurrentUser", JSON.stringify(""));
+    localStorage.setItem("CurrentUser", JSON.stringify(null));
     window.open('../index/index.html', '_self');
 });
 
@@ -114,15 +112,19 @@ function getTourGuideTrips() {
             const trip = allTrips[index];
             if (trip.TourGuideID == CurrentUserID) {
                 var element = `
-                    <div class="contentTrips">
-                        <div>
-                            <img id="editTrip" src="../image/edit.png" alt="" onclick="editTrip(${index})">
-                            <img id="deleteTrip" src="../image/delete.png" alt="" onclick="deleteTrip(${trip.ID})">
-                        </div>
-                        <img id="tripImage" src=${trip.Image} alt="tripsImage">
-                        <span id="tripTitle">${trip.Title}</span>
-                        <p id="tripDescription">${trip.Description}</p>
-                    </div>`;
+                <div class="contentTrips">
+                    <div class="buttons">
+                        <img id="editTrip" src="../image/edit.png" alt="" onclick="editTrip(${index})">
+                        <img id="deleteTrip" src="../image/delete.png" alt="" onclick="deleteTrip(${trip.ID})">
+                    </div>
+                    <img id="tripImage" src=${trip.Image} alt="tripsImage">
+                    <div class="tripTitleContanier">
+                        <span id="tripCity">${trip.City}</span>
+                        <p id="tripPrice">${trip.Price} SAR</p>
+                    </div>
+                    <h3 id="tripTitle">${trip.Title}</h3>
+                    <p id="tripDescription">${trip.Description}</p>
+                </div>`;
 
                 $('.tripsContanier').append(element);
             }
@@ -141,12 +143,23 @@ $('#closeAddTrip').on('click', function () {
 });
 
 $('#saveTrip').on('click', function () {
+
+    var addTripCity = $('#addTripCity').val();
+
     var addTripImage = $('#addTripImage').val();
     if (addTripImage.length == 0) {
         $('#addTripImage').attr('style', 'border: 1px solid red');
         return
     } else {
         $('#addTripImage').attr('style', 'border: none');
+    }
+
+    var addTripPrice = $('#addTripPrice').val();
+    if (addTripPrice.length == 0) {
+        $('#addTripPrice').attr('style', 'border: 1px solid red');
+        return
+    } else {
+        $('#addTripPrice').attr('style', 'border: none');
     }
 
     var addTripTitle = $('#addTripTitle').val();
@@ -168,7 +181,9 @@ $('#saveTrip').on('click', function () {
     var tripID = new Date().getTime().toString();
     var trip = {
         ID: tripID,
+        City: addTripCity,
         Image: addTripImage,
+        Price: addTripPrice,
         Title: addTripTitle,
         Description: addDescription,
         TourGuideID: CurrentUserID
@@ -177,6 +192,7 @@ $('#saveTrip').on('click', function () {
     saveTrip(trip);
 
     $('#addTripImage').val("");
+    $('#addTripPrice').val("");
     $('#addTripTitle').val("");
     $('#addDescription').val("");
     $('.addTripContainer').toggleClass('hidden');
@@ -197,22 +213,35 @@ var currentTripObj = null;
 function editTrip(index) {
     currentTripObj = allTrips[index]
     $('.updateTripContainer').toggleClass('hidden');
+    $('#updateTripCity').val(currentTripObj.City);
     $('#updateTripImage').val(currentTripObj.Image);
+    $('#updateTripPrice').val(currentTripObj.Price);
     $('#updateTripTitle').val(currentTripObj.Title);
     $('#updateDescription').val(currentTripObj.Description);
 }
 
-$('#closeAddTrip').on('click', function () {
+$('#closeUpdate').on('click', function () {
     $('.updateTripContainer').toggleClass('hidden');
 });
 
 $('#updateTrip').on('click', function () {
+
+    var updateTripCity = $('#updateTripCity').val();
+
     var updateTripImage = $('#updateTripImage').val();
     if (updateTripImage.length == 0) {
         $('#updateTripImage').attr('style', 'border: 1px solid red');
         return
     } else {
         $('#updateTripImage').attr('style', 'border: none');
+    }
+
+    var updateTripPrice = $('#updateTripPrice').val();
+    if (updateTripPrice.length == 0) {
+        $('#updateTripPrice').attr('style', 'border: 1px solid red');
+        return
+    } else {
+        $('#updateTripPrice').attr('style', 'border: none');
     }
 
     var updateTripTitle = $('#updateTripTitle').val();
@@ -232,7 +261,9 @@ $('#updateTrip').on('click', function () {
     }
     var trip = {
         ID: currentTripObj.ID,
+        City: updateTripCity,
         Image: updateTripImage,
+        Price: updateTripPrice,
         Title: updateTripTitle,
         Description: updateDescription,
         TourGuideID: currentTripObj.TourGuideID
@@ -241,10 +272,12 @@ $('#updateTrip').on('click', function () {
     updateTrip(trip);
 
     $('#updateTripImage').val("");
+    $('#updateTripPrice').val("");
     $('#updateTripTitle').val("");
     $('#updateDescription').val("");
     $('.updateTripContainer').toggleClass('hidden');
     getTourGuideTrips();
+    // alert("Update Successfully");
 });
 
 function updateTrip(trip) {
@@ -255,7 +288,7 @@ function updateTrip(trip) {
             localStorage.setItem("Trips", JSON.stringify(Trips));
         }
     }
-    alert("Update Successfully");
+    window.location.reload();
 }
 // // // // // // // // // // // // // // // // // // // // // // // // // 
 
@@ -269,8 +302,8 @@ function deleteTrip(TripID) {
             localStorage.setItem("Trips", JSON.stringify(Trips));
         }
     }
+    window.location.reload();
     alert("Deleted Successfully");
-    getTourGuideTrips();
 }
 // // // // // // // // // // // // // // // // // // // // // // // // //
 
