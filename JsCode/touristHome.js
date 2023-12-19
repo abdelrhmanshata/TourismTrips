@@ -87,3 +87,74 @@ $('#close').on('click', function () {
 // // // // // // // // // // // // // // // // // // // // // // // // //
 // // // // // // // // // // // // // // // // // // // // // // // // //
 // // // // // // // // // // // // // // // // // // // // // // // // // 
+var city = "All";
+getTourGuideTrips(city);
+getTourGuide();
+$('.city').on('click', function () {
+    city = $(this).val();
+    console.log(city)
+    $(".city").attr('style', 'background-color:none;')
+    $(this).attr('style', 'background-color:#092635;color:white;')
+    getTourGuideTrips(city);
+});
+
+function getTourGuideTrips(city) {
+    var allTrips = JSON.parse(localStorage.getItem("Trips"));
+    if (allTrips != null) {
+        $('.tripsContanier').html("");
+        for (let index = 0; index < allTrips.length; index++) {
+            const trip = allTrips[index];
+            if (city == "All") {
+                var element = `
+                <div class="contentTrips">
+                <img id="tripImage" src=${trip.Image} alt="tripsImage">
+                <div class="tripTitleContanier">
+                    <span id="tripCity">${trip.City}</span>
+                    <p id="tripPrice">${trip.Price} SAR</p>
+                </div>
+                 <h3 id="tripTitle">${trip.Title}</h3>
+                 <p id="tripDescription">${trip.Description}</p>
+                 <button onclick="bookTrip(${trip.ID})">Book</button>
+            </div>`;
+                $('.tripsContanier').append(element);
+            } else {
+                if (trip.City == city) {
+                    var element = `
+                    <div class="contentTrips">
+                    <img id="tripImage" src=${trip.Image} alt="tripsImage">
+                    <div class="tripTitleContanier">
+                        <span id="tripCity">${trip.City}</span>
+                        <p id="tripPrice">${trip.Price} SAR</p>
+                    </div>
+                     <h3 id="tripTitle">${trip.Title}</h3>
+                     <p id="tripDescription">${trip.Description}</p>
+                     <button onclick="bookTrip(${trip.ID})">Book</button>
+                </div>`;
+                    $('.tripsContanier').append(element);
+                }
+            }
+        }
+    }
+}
+
+function bookTrip(tripID) {
+    console.log(tripID);
+}
+
+
+function getTourGuide() {
+    var Users = JSON.parse(localStorage.getItem("Users"));
+    $('.tourGuidesContanier').html("");
+    for (let index = 0; index < Users.length; index++) {
+        if (Users[index].Type == "TourGuide") {
+            var element = `
+            <div class="contentTourGuides">
+                <img src="../image/Tour_Guide.png" alt="">
+                <h3>${Users[index].UserName}</h3>
+                <p>${Users[index].Brief}</p>
+            </div>`;
+            $('.tourGuidesContanier').append(element);
+        }
+    }
+}
+
